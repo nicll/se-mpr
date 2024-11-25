@@ -1,0 +1,19 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrleansPrototype", "OrleansPrototype", "{C0487AE9-E4AD-4277-ABBF-584F8E36BD69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AkkaNetPrototype", "AkkaNetPrototype", "{E0ACB6A8-B7A9-4D36-8071-CB6C209C0DBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProtoActorPrototype", "ProtoActorPrototype", "{C1B2FC15-A999-445C-B351-B4D92DCED2FA}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFADDB17-DD12-4E2F-A6BB-D5AE63074AFD}
+	EndGlobalSection
+EndGlobal
