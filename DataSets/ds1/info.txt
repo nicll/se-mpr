@@ -1,0 +1,3 @@
+Stationen: alle in Bundesland Wien
+Parameter: Lufttemperatur 2cm&2m, Luftdruck, Niederschlagssumme sowie alle zugehörigen Qualitätsflags
+Zeitraum: 2024-08-11 bis 2024-10-31
