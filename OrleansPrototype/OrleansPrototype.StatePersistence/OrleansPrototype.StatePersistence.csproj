@@ -10,8 +10,4 @@
     <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\OrleansPrototype.Models\OrleansPrototype.Models.csproj" />
-  </ItemGroup>
-
 </Project>
