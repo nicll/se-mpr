@@ -2,19 +2,23 @@
 using OrleansPrototype.GrainInterfaces;
 using OrleansPrototype.Models;
 using OrleansPrototype.StatePersistence;
+using SharedLibraries.Plots;
 
 namespace OrleansPrototype.GrainImplementations;
 
 public class SensorGrain : Grain, ISensorGrain
 {
     private readonly IPersistentState<PersistentSensorState> _persistedState;
+    private readonly IPlotGenerator _plotGenerator;
     private readonly ILogger<SensorGrain> _logger;
 
     public SensorGrain(
         [PersistentState(nameof(PersistentSensorState))] IPersistentState<PersistentSensorState> persistedState,
+        IPlotGenerator plotGenerator,
         ILogger<SensorGrain> logger)
     {
         _persistedState = persistedState;
+        _plotGenerator = plotGenerator;
         _logger = logger;
     }
 
@@ -31,6 +35,8 @@ public class SensorGrain : Grain, ISensorGrain
     public async Task ConfigureSensor(SensorConfiguration configuration)
     {
         _persistedState.State.MaxNumberOfRetainedDataEntries = configuration.MaxNumberOfRetainedDataEntries;
+        _persistedState.State.HistoryImageWidth = configuration.HistoryImageWidth;
+        _persistedState.State.HistoryImageHeight = configuration.HistoryImageHeight;
         await _persistedState.WriteStateAsync();
     }
 
@@ -84,5 +90,20 @@ public class SensorGrain : Grain, ISensorGrain
         return Task.FromResult(_persistedState.State.DataEntries
             .Select(e => e.Value)
             .Max());
+    }
+
+    public Task<SensorHistoryImage> GetHistoryImage()
+    {
+        var pngImage = _plotGenerator.GeneratePngPlot(
+            _persistedState.State.StationName,
+            _persistedState.State.Unit,
+            _persistedState.State.DataEntries.Select(s => (s.MeasuredAt, s.Value)).ToArray(),
+            _persistedState.State.HistoryImageWidth,
+            _persistedState.State.HistoryImageHeight);
+
+        return Task.FromResult(new SensorHistoryImage
+        {
+            PngImage = pngImage
+        });
     }
 }

@@ -15,4 +15,6 @@ public interface ISensorGrain : IGrainWithIntegerCompoundKey
     Task<double> GetMin();
 
     Task<double> GetMax();
+
+    Task<SensorHistoryImage> GetHistoryImage();
 }

@@ -1,3 +1,5 @@
+using SharedLibraries.Plots;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,6 +34,8 @@ builder.Host.UseOrleans(silo =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<IPlotGenerator, PlotGenerator>();
 
 var app = builder.Build();
 
