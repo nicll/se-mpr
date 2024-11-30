@@ -2,7 +2,7 @@
 
 namespace OrleansPrototype.GrainInterfaces;
 
-public interface ISensorGroup : IGrainWithStringKey
+public interface ISensorGroupGrain : IGrainWithStringKey
 {
     Task SetMetaData(SensorGroupMetaData sensorGroupMetaData);
 }

@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Runtime" Version="9.0.1" />
     <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OrleansPrototype.GrainInterfaces\OrleansPrototype.GrainInterfaces.csproj" />
+    <ProjectReference Include="..\OrleansPrototype.StatePersistence\OrleansPrototype.StatePersistence.csproj" />
   </ItemGroup>
 
 </Project>
