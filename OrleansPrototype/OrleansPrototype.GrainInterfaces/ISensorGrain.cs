@@ -17,4 +17,6 @@ public interface ISensorGrain : IGrainWithIntegerCompoundKey
     Task<double> GetMax();
 
     Task<SensorHistoryImage> GetHistoryImage();
+
+    Task DeleteData();
 }

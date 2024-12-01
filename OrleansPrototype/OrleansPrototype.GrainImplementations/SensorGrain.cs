@@ -106,4 +106,9 @@ public class SensorGrain : Grain, ISensorGrain
             PngImage = pngImage
         });
     }
+
+    public async Task DeleteData()
+    {
+        await _persistedState.ClearStateAsync();
+    }
 }
