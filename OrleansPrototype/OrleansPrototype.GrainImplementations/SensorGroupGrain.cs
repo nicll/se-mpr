@@ -26,6 +26,19 @@ public class SensorGroupGrain : Grain, ISensorGroupGrain
         throw new NotImplementedException();
     }
 
+    public Task<SensorIds> ListSensors()
+    {
+        if (!_persistedState.RecordExists || _persistedState.State.LinkedSensors is null or { Length: < 1 })
+            throw new InvalidOperationException("Cannot list non-existent sensors.");
+
+        return Task.FromResult(new SensorIds
+        {
+            Ids = _persistedState.State.LinkedSensors
+                .Select(t => new SensorId(t.numericIdentifier, t.typeIdentifier))
+                .ToArray()
+        });
+    }
+
     public async Task LinkSensors(LinkSensorsData linkSensorsData)
     {
         if (_persistedState.RecordExists)
