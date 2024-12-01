@@ -7,9 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseOrleans(silo =>
 {
     silo.UseLocalhostClustering();
+    silo.AddMemoryGrainStorageAsDefault();
 
     // configure ADO.NET SQL server clustering
     //silo.UseAdoNetClustering(opts =>
+    //{
+    //    opts.Invariant = "System.Data.SqlClient";
+    //    opts.ConnectionString = @"Data Source=(localdb)\SQLEXPRESS;" +
+    //        "Initial Catalog=mpr_orleans_a;Integrated Security=True;" +
+    //        "Pooling=False;Max Pool Size=200;" +
+    //        "Asynchronous Processing=True;MultipleActiveResultSets=True";
+    //});
+    //silo.AddAdoNetGrainStorageAsDefault(opts =>
     //{
     //    opts.Invariant = "System.Data.SqlClient";
     //    opts.ConnectionString = @"Data Source=(localdb)\SQLEXPRESS;" +
@@ -26,6 +35,10 @@ builder.Host.UseOrleans(silo =>
     //{
     //    opts.DatabaseName = "mpr_orleans_a";
     //    opts.Strategy = Orleans.Providers.MongoDB.Configuration.MongoDBMembershipStrategy.SingleDocument;
+    //});
+    //silo.AddMongoDBGrainStorageAsDefault(opts =>
+    //{
+    //    opts.DatabaseName = "mpr_orleans_a";
     //});
 
     silo.ConfigureLogging(log => log.AddConsole());

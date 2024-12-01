@@ -95,7 +95,7 @@ public class SensorGrain : Grain, ISensorGrain
     public Task<SensorHistoryImage> GetHistoryImage()
     {
         var pngImage = _plotGenerator.GeneratePngPlot(
-            _persistedState.State.StationName,
+            _persistedState.State.StationName + " - " + _persistedState.State.ParameterName,
             _persistedState.State.Unit,
             _persistedState.State.DataEntries.Select(s => (s.MeasuredAt, s.Value)).ToArray(),
             _persistedState.State.HistoryImageWidth,
