@@ -1,6 +1,6 @@
 Stationen: alle in Bundesland Wien
 Parameter: Lufttemperatur 2cm&2m, Luftdruck, Niederschlagssumme sowie alle zugehörigen Qualitätsflags
-Zeitraum: 2024-08-11 bis 2024-10-31
+Zeitraum: 2024-08-01 bis 2024-10-31
 
 Datenquelle: https://data.hub.geosphere.at/dataset/klima-v2-10min
 Autoren: GeoSphere Austria

@@ -1,0 +1,7 @@
+Stationen: alle in Bundesland Wien
+Parameter: alle Parameter sowie alle zugehörigen Qualitätsflags
+Zeitraum: 2024-03-01 bis 2024-05-31
+
+Datenquelle: https://data.hub.geosphere.at/dataset/klima-v2-10min
+Autoren: GeoSphere Austria
+Lizenz: https://creativecommons.org/licenses/by/4.0/
