@@ -4,6 +4,7 @@
 [Alias("OrleansPrototype.Models.SensorIds")]
 public class SensorIds
 {
+    [Id(0)]
     public required ICollection<SensorId> Ids { get; init; }
 }
 

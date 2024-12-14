@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SharedLibraries.Plots\SharedLibraries.Plots.csproj" />
+    <ProjectReference Include="..\..\SharedLibraries\SharedLibraries.Plots\SharedLibraries.Plots.csproj" />
     <ProjectReference Include="..\OrleansPrototype.GrainInterfaces\OrleansPrototype.GrainInterfaces.csproj" />
     <ProjectReference Include="..\OrleansPrototype.StatePersistence\OrleansPrototype.StatePersistence.csproj" />
   </ItemGroup>
