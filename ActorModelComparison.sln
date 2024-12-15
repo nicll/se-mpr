@@ -9,9 +9,75 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AkkaNetPrototype", "AkkaNet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProtoActorPrototype", "ProtoActorPrototype", "{C1B2FC15-A999-445C-B351-B4D92DCED2FA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansPrototype.SiloService", "OrleansPrototype\OrleansPrototype.SiloService\OrleansPrototype.SiloService.csproj", "{46AA30DE-8FBB-4714-A867-8D56D821C150}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansPrototype.ClientService", "OrleansPrototype\OrleansPrototype.ClientService\OrleansPrototype.ClientService.csproj", "{0B782FFE-2631-45C2-83B9-CCEB7E534B8E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansPrototype.GrainInterfaces", "OrleansPrototype\OrleansPrototype.GrainInterfaces\OrleansPrototype.GrainInterfaces.csproj", "{CB19D776-382A-4547-92F7-83B9A7AAAE72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansPrototype.GrainImplementations", "OrleansPrototype\OrleansPrototype.GrainImplementations\OrleansPrototype.GrainImplementations.csproj", "{FC912ABC-9442-4225-A2F7-78EBB1640D0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansPrototype.Models", "OrleansPrototype\OrleansPrototype.Models\OrleansPrototype.Models.csproj", "{85FCE934-68AF-419F-9EEB-20F5357E6E36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansPrototype.StatePersistence", "OrleansPrototype\OrleansPrototype.StatePersistence\OrleansPrototype.StatePersistence.csproj", "{D6F475C9-B051-4FB4-A9B2-7CF7CEC14B05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedLibraries", "SharedLibraries", "{A9EAD047-5D25-43A6-81F0-3FDF49668A3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibraries.SensorDataParser", "SharedLibraries\SharedLibraries.SensorDataParser\SharedLibraries.SensorDataParser.csproj", "{8942BE99-2C7E-495D-BFA1-29B140FD614E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibraries.Plots", "SharedLibraries\SharedLibraries.Plots\SharedLibraries.Plots.csproj", "{CA55EB25-ED4A-49B6-9C1D-3BDB415FC78B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46AA30DE-8FBB-4714-A867-8D56D821C150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46AA30DE-8FBB-4714-A867-8D56D821C150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46AA30DE-8FBB-4714-A867-8D56D821C150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46AA30DE-8FBB-4714-A867-8D56D821C150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B782FFE-2631-45C2-83B9-CCEB7E534B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B782FFE-2631-45C2-83B9-CCEB7E534B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B782FFE-2631-45C2-83B9-CCEB7E534B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B782FFE-2631-45C2-83B9-CCEB7E534B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB19D776-382A-4547-92F7-83B9A7AAAE72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB19D776-382A-4547-92F7-83B9A7AAAE72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB19D776-382A-4547-92F7-83B9A7AAAE72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB19D776-382A-4547-92F7-83B9A7AAAE72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC912ABC-9442-4225-A2F7-78EBB1640D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC912ABC-9442-4225-A2F7-78EBB1640D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC912ABC-9442-4225-A2F7-78EBB1640D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC912ABC-9442-4225-A2F7-78EBB1640D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85FCE934-68AF-419F-9EEB-20F5357E6E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85FCE934-68AF-419F-9EEB-20F5357E6E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85FCE934-68AF-419F-9EEB-20F5357E6E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85FCE934-68AF-419F-9EEB-20F5357E6E36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F475C9-B051-4FB4-A9B2-7CF7CEC14B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F475C9-B051-4FB4-A9B2-7CF7CEC14B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F475C9-B051-4FB4-A9B2-7CF7CEC14B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F475C9-B051-4FB4-A9B2-7CF7CEC14B05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8942BE99-2C7E-495D-BFA1-29B140FD614E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8942BE99-2C7E-495D-BFA1-29B140FD614E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8942BE99-2C7E-495D-BFA1-29B140FD614E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8942BE99-2C7E-495D-BFA1-29B140FD614E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA55EB25-ED4A-49B6-9C1D-3BDB415FC78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA55EB25-ED4A-49B6-9C1D-3BDB415FC78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA55EB25-ED4A-49B6-9C1D-3BDB415FC78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA55EB25-ED4A-49B6-9C1D-3BDB415FC78B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46AA30DE-8FBB-4714-A867-8D56D821C150} = {C0487AE9-E4AD-4277-ABBF-584F8E36BD69}
+		{0B782FFE-2631-45C2-83B9-CCEB7E534B8E} = {C0487AE9-E4AD-4277-ABBF-584F8E36BD69}
+		{CB19D776-382A-4547-92F7-83B9A7AAAE72} = {C0487AE9-E4AD-4277-ABBF-584F8E36BD69}
+		{FC912ABC-9442-4225-A2F7-78EBB1640D0D} = {C0487AE9-E4AD-4277-ABBF-584F8E36BD69}
+		{85FCE934-68AF-419F-9EEB-20F5357E6E36} = {C0487AE9-E4AD-4277-ABBF-584F8E36BD69}
+		{D6F475C9-B051-4FB4-A9B2-7CF7CEC14B05} = {C0487AE9-E4AD-4277-ABBF-584F8E36BD69}
+		{8942BE99-2C7E-495D-BFA1-29B140FD614E} = {A9EAD047-5D25-43A6-81F0-3FDF49668A3E}
+		{CA55EB25-ED4A-49B6-9C1D-3BDB415FC78B} = {A9EAD047-5D25-43A6-81F0-3FDF49668A3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFADDB17-DD12-4E2F-A6BB-D5AE63074AFD}
