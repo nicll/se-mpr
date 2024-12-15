@@ -12,9 +12,9 @@ public interface ISensorGrain : IGrainWithIntegerCompoundKey
 
     Task<double> GetAverage();
 
-    Task<double> GetMin();
+    Task<double> GetMinimum();
 
-    Task<double> GetMax();
+    Task<double> GetMaximum();
 
     Task<SensorHistoryImage> GetHistoryImage();
 

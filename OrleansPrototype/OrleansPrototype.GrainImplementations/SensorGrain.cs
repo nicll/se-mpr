@@ -72,7 +72,7 @@ public class SensorGrain : Grain, ISensorGrain
             .Average());
     }
 
-    public Task<double> GetMin()
+    public Task<double> GetMinimum()
     {
         if (_persistedState.State.DataEntries is null or { Length: < 1 })
             throw new InvalidOperationException("Cannot calculate min when no data entries exist.");
@@ -82,7 +82,7 @@ public class SensorGrain : Grain, ISensorGrain
             .Min());
     }
 
-    public Task<double> GetMax()
+    public Task<double> GetMaximum()
     {
         if (_persistedState.State.DataEntries is null or { Length: < 1 })
             throw new InvalidOperationException("Cannot calculate max when no data entries exist.");
