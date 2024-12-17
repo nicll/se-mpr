@@ -6,7 +6,7 @@ public interface ISensorGroupGrain : IGrainWithStringKey
 {
     Task SetMetaData(SensorGroupMetaData sensorGroupMetaData);
 
-    Task<SensorIds> ListSensors();
+    Task<SensorIds?> ListSensors();
 
     Task LinkSensors(LinkSensorsData linkSensorsData);
 

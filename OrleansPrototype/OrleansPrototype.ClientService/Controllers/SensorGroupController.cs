@@ -4,7 +4,7 @@ using OrleansPrototype.Models;
 
 namespace OrleansPrototype.ClientService.Controllers;
 
-[Route("api/[controller]/[action]")]
+[Route("api/[controller]/{groupIdentifier}")]
 [ApiController]
 public class SensorGroupController : ControllerBase
 {
@@ -18,7 +18,7 @@ public class SensorGroupController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> LinkSensors([FromQuery] string groupIdentifier, [FromBody] LinkSensorsData data)
+    public async Task<IActionResult> LinkSensors([FromRoute] string groupIdentifier, [FromBody] LinkSensorsData data)
     {
         var sensorGroupGrain = _clusterClient.GetGrain<ISensorGroupGrain>(groupIdentifier);
         await sensorGroupGrain.LinkSensors(data);
@@ -26,12 +26,16 @@ public class SensorGroupController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> ListSensors([FromQuery] string groupIdentifier)
+    public async Task<IActionResult> ListSensors([FromRoute] string groupIdentifier)
     {
         try
         {
             var sensorGroupGrain = _clusterClient.GetGrain<ISensorGroupGrain>(groupIdentifier);
             var sensorIds = await sensorGroupGrain.ListSensors();
+
+            if (sensorIds is null)
+                return NotFound();
+
             return Ok(sensorIds.Ids);
         }
         catch (Exception e)
@@ -42,7 +46,7 @@ public class SensorGroupController : ControllerBase
     }
 
     [HttpDelete]
-    public async Task<IActionResult> UnlinkSensors([FromQuery] string groupIdentifier)
+    public async Task<IActionResult> UnlinkSensors([FromRoute] string groupIdentifier)
     {
         try
         {
