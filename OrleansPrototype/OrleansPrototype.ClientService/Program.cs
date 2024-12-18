@@ -1,3 +1,6 @@
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,10 +10,16 @@ builder.Services.AddRazorPages();
 builder.UseOrleansClient(client =>
 {
     client.UseLocalhostClustering();
+
 });
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddOpenTelemetry()
+    .WithMetrics(builder => builder.AddRuntimeInstrumentation().AddAspNetCoreInstrumentation().AddHttpClientInstrumentation())
+    .WithTracing(builder => builder.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation())
+    .WithLogging();
 
 var app = builder.Build();
 
@@ -18,7 +27,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 else

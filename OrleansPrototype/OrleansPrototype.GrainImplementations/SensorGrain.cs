@@ -51,7 +51,7 @@ public class SensorGrain : Grain, ISensorGrain
             Quality = dataEntry.Quality
         };
 
-        var newEntries = _persistedState.State.DataEntries.Append(persistentDataEntry);
+        var newEntries = (_persistedState.State.DataEntries ?? []).Append(persistentDataEntry);
 
         // remove the first few entries if we have too many
         if (newEntries.Count() > maxNumberOfRetainedEntries)
@@ -94,6 +94,9 @@ public class SensorGrain : Grain, ISensorGrain
 
     public Task<SensorHistoryImage> GetHistoryImage()
     {
+        if (_persistedState.State.DataEntries is null or { Length: < 1 })
+            throw new InvalidOperationException("Cannot calculate max when no data entries exist.");
+
         var pngImage = _plotGenerator.GeneratePngPlot(
             _persistedState.State.StationName + " - " + _persistedState.State.ParameterName,
             _persistedState.State.Unit,

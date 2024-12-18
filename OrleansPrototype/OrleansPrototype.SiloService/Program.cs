@@ -1,3 +1,5 @@
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
 using SharedLibraries.Plots;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,6 +49,11 @@ builder.Host.UseOrleans(silo =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddOpenTelemetry()
+    .WithMetrics(builder => builder.AddRuntimeInstrumentation().AddAspNetCoreInstrumentation().AddHttpClientInstrumentation())
+    .WithTracing(builder => builder.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation())
+    .WithLogging();
 
 builder.Services.AddSingleton<IPlotGenerator, PlotGenerator>();
 
