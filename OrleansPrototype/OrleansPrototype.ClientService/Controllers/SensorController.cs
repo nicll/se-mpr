@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrleansPrototype.GrainInterfaces;
+using SharedLibraries.SensorDataParser;
 
 namespace OrleansPrototype.ClientService.Controllers;
 
@@ -10,11 +11,13 @@ public class SensorController : ControllerBase
 {
     private readonly ILogger<SensorController> _logger;
     private readonly IClusterClient _clusterClient;
+    private readonly IDataParser _dataParser;
 
-    public SensorController(ILogger<SensorController> logger, IClusterClient clusterClient)
+    public SensorController(ILogger<SensorController> logger, IClusterClient clusterClient, IDataParser dataParser)
     {
         _logger = logger;
         _clusterClient = clusterClient;
+        _dataParser = dataParser;
     }
 
     [HttpPost]
@@ -60,5 +63,29 @@ public class SensorController : ControllerBase
         var sensorGrain = _clusterClient.GetGrain<ISensorGrain>(numericIdentifier, typeIdentifier);
         var image = await sensorGrain.GetHistoryImage();
         return File(image.PngImage, "image/png");
+    }
+
+    [HttpPost("bulk/csv")]
+    public async Task<IActionResult> AddBulkDataFromCSV()
+    {
+        var values = await _dataParser.LoadValues(Request.Body);
+        var valuesBySensor = values.GroupBy(v => (v.numericIdentifier, v.typeIdentifier));
+
+        foreach (var sensorDataGroup in valuesBySensor)
+        {
+            var sensorGrain = _clusterClient.GetGrain<ISensorGrain>(sensorDataGroup.Key.numericIdentifier, sensorDataGroup.Key.typeIdentifier);
+            
+            foreach (var dataEntry in sensorDataGroup)
+            {
+                await sensorGrain.AppendDataEntry(new()
+                {
+                    MeasuredAt = dataEntry.measurementTime,
+                    Value = dataEntry.value,
+                    Quality = 1
+                });
+            }
+        }
+
+        return Ok();
     }
 }
