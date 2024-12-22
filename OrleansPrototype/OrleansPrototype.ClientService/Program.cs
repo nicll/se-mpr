@@ -17,7 +17,7 @@ builder.UseOrleansClient(client =>
     {
         opts.Invariant = "Microsoft.Data.SqlClient";
         opts.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;" +
-            "Initial Catalog=mpr_orleans_a;Integrated Security=False;User Id=mpr_orleans_a_user;Password=p4ssw0rd;" +
+            "Initial Catalog=mpr_orleans_b;Integrated Security=True;" +
             "Pooling=False;Max Pool Size=200;MultipleActiveResultSets=True;Encrypt=False;TrustServerCertificate=True";
     });
 
