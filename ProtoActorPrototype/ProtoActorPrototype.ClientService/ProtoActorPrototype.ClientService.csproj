@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e9484257-07f4-490a-a8b9-10af9142d15c</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Proto.Cluster" Version="1.7.0" />
+    <PackageReference Include="Proto.Cluster.Consul" Version="1.7.0" />
+    <PackageReference Include="Proto.Cluster.TestProvider" Version="1.7.0" />
+    <PackageReference Include="Proto.OpenTelemetry" Version="1.7.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharedLibraries\SharedLibraries.SensorDataParser\SharedLibraries.SensorDataParser.csproj" />
+    <ProjectReference Include="..\ProtoActorPrototype.Grains\ProtoActorPrototype.Grains.csproj" />
+  </ItemGroup>
+
+</Project>

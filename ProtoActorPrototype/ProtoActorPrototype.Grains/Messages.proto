@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProtoActorPrototype.Grains";
+
+import "google/protobuf/timestamp.proto";
+
+message SensorMetaData {
+	string unit = 1;
+	string stationName = 2;
+	string parameterName = 3;
+	double wgs84Longitude = 4;
+	double wgs84Latitude = 5;
+}
+
+message SensorConfiguration {
+	int32 maxNumberOfRetainedDataEntries = 1;
+	int32 historyImageWidth = 2;
+	int32 historyImageHeight = 3;
+}
+
+message SensorDataEntry {
+	double value = 1;
+	google.protobuf.Timestamp measuredAt = 2;
+	double quality = 3;
+}
+
+message SensorHistoryImage {
+	bytes pngImage = 1;
+}
+
+message SensorGroupMetaData {
+	// empty
+}
+
+message SensorIds {
+	repeated SensorId ids = 1;
+}
+
+message LinkSensorsData {
+	repeated SensorInitializationEntry sensors = 1;
+}
+
+message SensorInitializationEntry {
+	SensorId sensorId = 1;
+	SensorMetaData metaData = 2;
+	SensorConfiguration configuration = 3;
+}
+
+message SensorId {
+	int64 numericIdentifier = 1;
+	string typeIdentifier = 2;
+}

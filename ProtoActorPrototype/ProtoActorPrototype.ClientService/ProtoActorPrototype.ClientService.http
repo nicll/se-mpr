@@ -1,0 +1,6 @@
+@ProtoActorPrototype.ClientService_HostAddress = http://localhost:5044
+
+GET {{ProtoActorPrototype.ClientService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

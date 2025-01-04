@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>816cac7f-3272-4219-810f-3313c860a65d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.13.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.10.0" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.10.1" />
+    <PackageReference Include="Proto.Cluster" Version="1.7.0" />
+    <PackageReference Include="Proto.Cluster.Consul" Version="1.7.0" />
+    <PackageReference Include="Proto.Cluster.Identity.MongoDb" Version="1.7.0" />
+    <PackageReference Include="Proto.Cluster.TestProvider" Version="1.7.0" />
+    <PackageReference Include="Proto.OpenTelemetry" Version="1.7.0" />
+    <PackageReference Include="Proto.Persistence.MongoDB" Version="1.7.0" />
+    <PackageReference Include="Proto.Persistence.SqlServer" Version="1.7.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharedLibraries\SharedLibraries.Plots\SharedLibraries.Plots.csproj" />
+    <ProjectReference Include="..\..\SharedLibraries\SharedLibraries.SensorDataParser\SharedLibraries.SensorDataParser.csproj" />
+    <ProjectReference Include="..\ProtoActorPrototype.GrainImplementations\ProtoActorPrototype.GrainImplementations.csproj" />
+  </ItemGroup>
+
+</Project>

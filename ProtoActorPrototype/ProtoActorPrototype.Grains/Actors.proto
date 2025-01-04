@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProtoActorPrototype.Grains";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "Messages.proto";
+
+service SensorGrain {
+  rpc SetMetaData (SensorMetaData) returns (google.protobuf.Empty);
+  rpc ConfigureSensor (SensorConfiguration) returns (google.protobuf.Empty);
+  rpc AppendDataEntry (SensorDataEntry) returns (google.protobuf.Empty);
+  rpc GetAverage (google.protobuf.Empty) returns (google.protobuf.DoubleValue);
+  rpc GetMinimum (google.protobuf.Empty) returns (google.protobuf.DoubleValue);
+  rpc GetMaximum (google.protobuf.Empty) returns (google.protobuf.DoubleValue);
+  rpc GetHistoryImage (google.protobuf.Empty) returns (SensorHistoryImage);
+  rpc DeleteData (google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+
+service SensorGroupGrain {
+	rpc SetMetaData (SensorGroupMetaData) returns (google.protobuf.Empty);
+	rpc ListSensors (google.protobuf.Empty) returns (SensorIds);
+	rpc LinkSensors (LinkSensorsData) returns (google.protobuf.Empty);
+	rpc UnlinkSensors (google.protobuf.Empty) returns (google.protobuf.Empty);
+}
