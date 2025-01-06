@@ -84,6 +84,16 @@ public class SensorGroupGrainImplementation : SensorGroupGrainBase
 
     public override async Task UnlinkSensors()
     {
+        if (_persistedState.LinkedSensors is null or { Length: < 1 })
+            throw new InvalidOperationException("Cannot unlink non-existing group.");
+
+        foreach (var sensor in _persistedState.LinkedSensors)
+        {
+            var grain = Context.GetSensorGrain(sensor.numericIdentifier + '/' +  sensor.typeIdentifier);
+            await grain.DeleteData(CancellationToken.None);
+        }
+
+        _persistedState.LinkedSensors = [];
         await _persistence.DeleteSnapshotsAsync(_persistence.Index);
     }
 }

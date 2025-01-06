@@ -71,6 +71,7 @@ public class SensorGroupGrain : Grain, ISensorGroupGrain
             await grain.DeleteData();
         }
 
+        _persistedState.State.LinkedSensors = [];
         await _persistedState.ClearStateAsync();
     }
 }
