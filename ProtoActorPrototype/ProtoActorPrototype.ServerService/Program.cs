@@ -91,6 +91,7 @@ static void AddProtoActorSetup(IServiceCollection services)
             .WithCluster(ClusterConfig
                 .Setup(clusterName, clusterProvider, new PartitionIdentityLookup())
                 .WithClusterKinds(clusterKinds)
+                .WithHeartbeatExpirationDisabled() // needed when using breakpoints
             )
             .Cluster()
             .WithPidCacheInvalidation();
@@ -134,5 +135,5 @@ static (GrpcNetRemoteConfig, IClusterProvider) ConfigureClustering(IConfiguratio
         .WithProtoMessages([EmptyReflection.Descriptor, WrappersReflection.Descriptor, MessagesReflection.Descriptor])
         .WithRemoteDiagnostics(true),
         //new TestProvider(new TestProviderOptions(), new InMemAgent()));
-        new ConsulProvider(new ConsulProviderConfig(), client => client.Address = new("http://localhost:8500")));
+        new ConsulProvider(new ConsulProviderConfig().WithDeregisterCritical(TimeSpan.FromMinutes(5)).WithServiceTtl(TimeSpan.FromMinutes(1)), client => client.Address = new("http://localhost:8500")));
 }
