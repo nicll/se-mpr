@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoActorPrototype.Grains"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoActorPrototype.GrainImplementations", "ProtoActorPrototype\ProtoActorPrototype.GrainImplementations\ProtoActorPrototype.GrainImplementations.csproj", "{E42C14B7-346C-496B-8C05-56F303FB6139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoActorPrototype.Persistence", "ProtoActorPrototype.Persistence\ProtoActorPrototype.Persistence.csproj", "{C10E61E9-CB39-4FA7-9576-AF34F2A02E59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoActorPrototype.Persistence", "ProtoActorPrototype\ProtoActorPrototype.Persistence\ProtoActorPrototype.Persistence.csproj", "{C10E61E9-CB39-4FA7-9576-AF34F2A02E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
