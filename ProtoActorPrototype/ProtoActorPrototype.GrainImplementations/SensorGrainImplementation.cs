@@ -76,6 +76,7 @@ public class SensorGrainImplementation : SensorGrainBase
         // swap out data entries and save
         _persistedState.DataEntries = newEntries.ToArray();
         await _persistence.PersistSnapshotAsync(_persistedState);
+        await _persistence.DeleteSnapshotsAsync(_persistence.Index - 1);
     }
 
     public override async Task SetMetaData(SensorMetaData request)
@@ -86,6 +87,7 @@ public class SensorGrainImplementation : SensorGrainBase
         _persistedState.Wgs84Longitude = request.Wgs84Longitude;
         _persistedState.Wgs84Latitude = request.Wgs84Latitude;
         await _persistence.PersistSnapshotAsync(_persistedState);
+        await _persistence.DeleteSnapshotsAsync(_persistence.Index - 1);
     }
 
     public override async Task ConfigureSensor(SensorConfiguration request)
@@ -94,6 +96,7 @@ public class SensorGrainImplementation : SensorGrainBase
         _persistedState.HistoryImageWidth = request.HistoryImageWidth;
         _persistedState.HistoryImageHeight = request.HistoryImageHeight;
         await _persistence.PersistSnapshotAsync(_persistedState);
+        await _persistence.DeleteSnapshotsAsync(_persistence.Index - 1);
     }
 
     public override Task<DoubleValue> GetAverage()
