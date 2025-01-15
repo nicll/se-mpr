@@ -1,0 +1,6 @@
+@AkkaNetPrototype.ServerService_HostAddress = http://localhost:5211
+
+GET {{AkkaNetPrototype.ServerService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

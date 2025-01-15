@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>7c992269-98d3-490e-9da2-bf8be6a3b6de</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Akka" Version="1.5.35" />
+    <PackageReference Include="Akka.Cluster" Version="1.5.35" />
+    <PackageReference Include="Akka.Cluster.Hosting" Version="1.5.35" />
+    <PackageReference Include="Akka.Persistence.Hosting" Version="1.5.35" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AkkaNetPrototype.Messages\AkkaNetPrototype.Messages.csproj" />
+  </ItemGroup>
+
+</Project>
