@@ -10,15 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Akka" Version="1.5.35" />
-    <PackageReference Include="Akka.Cluster" Version="1.5.35" />
-    <PackageReference Include="Akka.Cluster.Hosting" Version="1.5.35" />
-    <PackageReference Include="Akka.Persistence.Hosting" Version="1.5.35" />
+    <PackageReference Include="Akka" Version="1.5.37" />
+    <PackageReference Include="Akka.Cluster" Version="1.5.37" />
+    <PackageReference Include="Akka.Cluster.Hosting" Version="1.5.37" />
+    <PackageReference Include="Akka.DependencyInjection" Version="1.5.37" />
+    <PackageReference Include="Akka.Discovery.Azure" Version="1.5.37" />
+    <PackageReference Include="Akka.Management" Version="1.5.37" />
+    <PackageReference Include="Akka.Persistence.Hosting" Version="1.5.37" />
+    <PackageReference Include="Azure.Identity" Version="1.13.2" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SharedLibraries\SharedLibraries.SensorDataParser\SharedLibraries.SensorDataParser.csproj" />
     <ProjectReference Include="..\AkkaNetPrototype.Messages\AkkaNetPrototype.Messages.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,9 @@
 ﻿namespace AkkaNetPrototype.Messages.Sensor;
 
-public class AppendSensorDataEntry
+public class AppendSensorDataEntry : ISensorMessage
 {
+    public required string EntityId { get; init; }
+
     public required double Value { get; init; }
 
     public required DateTimeOffset MeasuredAt { get; init; }

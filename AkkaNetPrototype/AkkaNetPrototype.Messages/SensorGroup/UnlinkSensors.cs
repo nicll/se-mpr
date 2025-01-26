@@ -1,5 +1,6 @@
 ﻿namespace AkkaNetPrototype.Messages.SensorGroup;
 
-public class UnlinkSensors
+public class UnlinkSensors : ISensorGroupMessage
 {
+    public required string EntityId { get; init; }
 }
