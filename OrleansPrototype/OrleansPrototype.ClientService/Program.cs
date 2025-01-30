@@ -3,30 +3,32 @@ using OpenTelemetry.Trace;
 using Orleans.Runtime;
 using SharedLibraries.SensorDataParser;
 
+Thread.Sleep(3_000);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddRazorPages();
+//builder.Services.AddRazorPages();
 
 builder.UseOrleansClient(client =>
 {
     //mclient.UseLocalhostClustering();
 
-    client.UseAdoNetClustering(opts =>
-    {
-        opts.Invariant = "Microsoft.Data.SqlClient";
-        opts.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;" +
-            "Initial Catalog=mpr_orleans_b;Integrated Security=True;" +
-            "Pooling=False;Max Pool Size=200;MultipleActiveResultSets=True;Encrypt=False;TrustServerCertificate=True";
-    });
-
-    //client.UseMongoDBClient("mongodb://localhost:27017/");
-    //client.UseMongoDBClustering(opts =>
+    //client.UseAdoNetClustering(opts =>
     //{
-    //    opts.DatabaseName = "mpr_orleans_a";
-    //    opts.Strategy = Orleans.Providers.MongoDB.Configuration.MongoDBMembershipStrategy.SingleDocument;
+    //    opts.Invariant = "Microsoft.Data.SqlClient";
+    //    opts.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;" +
+    //        "Initial Catalog=mpr_orleans_b;Integrated Security=True;" +
+    //        "Pooling=False;Max Pool Size=200;MultipleActiveResultSets=True;Encrypt=False;TrustServerCertificate=True";
     //});
+
+    client.UseMongoDBClient("mongodb://localhost:27017/");
+    client.UseMongoDBClustering(opts =>
+    {
+        opts.DatabaseName = "mpr_orleans_a";
+        opts.Strategy = Orleans.Providers.MongoDB.Configuration.MongoDBMembershipStrategy.SingleDocument;
+    });
 });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -61,6 +63,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapRazorPages();
+//app.MapRazorPages();
 
 app.Run();
