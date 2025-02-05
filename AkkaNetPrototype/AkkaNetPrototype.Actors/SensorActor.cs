@@ -42,7 +42,9 @@ public class SensorActor : ReceivePersistentActor
     private void DeleteOldStates(SaveSnapshotSuccess success)
     {
         _persistenceSequenceNumber = success.Metadata.SequenceNr;
-        DeleteSnapshots(new(_persistenceSequenceNumber - 1));
+
+        if (_persistenceSequenceNumber > 0)
+            DeleteSnapshots(new(_persistenceSequenceNumber - 1));
     }
 
     private void SetSensorConfiguration(SetSensorConfiguration configuration)

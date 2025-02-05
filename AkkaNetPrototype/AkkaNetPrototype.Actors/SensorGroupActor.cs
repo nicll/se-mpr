@@ -43,7 +43,9 @@ public class SensorGroupActor : ReceivePersistentActor
     private void DeleteOldStates(SaveSnapshotSuccess success)
     {
         _persistenceSequenceNumber = success.Metadata.SequenceNr;
-        DeleteSnapshots(new(_persistenceSequenceNumber - 1));
+
+        if (_persistenceSequenceNumber > 0)
+            DeleteSnapshots(new(_persistenceSequenceNumber - 1));
     }
 
     private void SetSensorGroupMetadata(SetSensorGroupMetadata _)
@@ -67,7 +69,7 @@ public class SensorGroupActor : ReceivePersistentActor
 
     private async Task LinkSensors(LinkSensors linkSensors)
     {
-        if (_persistedState?.LinkedSensors is null or { Length: > 0 })
+        if (_persistedState?.LinkedSensors is { Length: > 0 })
             throw new InvalidOperationException("Cannot link existing group to sensors.");
 
         // initialize all child actors
@@ -77,6 +79,11 @@ public class SensorGroupActor : ReceivePersistentActor
             sensorActorShard.Tell(new SetSensorMetadata { EntityId = sensor.SensorId.NumericIdentifier + '#' + sensor.SensorId.TypeIdentifier, Metadata = sensor.Metadata }, Self);
             sensorActorShard.Tell(new SetSensorConfiguration { EntityId = sensor.SensorId.NumericIdentifier + '#' + sensor.SensorId.TypeIdentifier, Configuration = sensor.Configuration }, Self);
         }
+
+        _persistedState = new()
+        {
+            LinkedSensors = []
+        };
 
         // remember that these sensors/grains belong to this group
         _persistedState.LinkedSensors = linkSensors.Sensors
