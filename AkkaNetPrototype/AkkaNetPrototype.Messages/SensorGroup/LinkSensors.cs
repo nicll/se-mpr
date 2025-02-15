@@ -4,7 +4,7 @@ namespace AkkaNetPrototype.Messages.SensorGroup;
 
 public class LinkSensors : ISensorGroupMessage
 {
-    public string EntityId { get; set; } = null!;
+    public string EntityId { get; set; } = String.Empty;
 
     public required ICollection<SensorInitializationEntry> Sensors { get; init; }
 }

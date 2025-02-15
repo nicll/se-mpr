@@ -19,7 +19,7 @@ while (true)
     try
     {
         var value = Random.Shared.Next(0, 40);
-        var url = $"https://localhost:{port}/api/sensor/{numericId}/{typeId}?value={value}&measurementTime={Uri.EscapeDataString(insertTime.ToString("o"))}&quality=1";
+        var url = $"http://localhost:{port}/api/sensor/{numericId}/{typeId}?value={value}&measurementTime={Uri.EscapeDataString(insertTime.ToString("o"))}&quality=1";
         Console.WriteLine("Requesting: " + url);
         var resp = await http.PostAsync(url, null);
         resp.EnsureSuccessStatusCode();
