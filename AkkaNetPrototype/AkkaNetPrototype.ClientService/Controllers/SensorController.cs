@@ -11,10 +11,10 @@ namespace AkkaNetPrototype.ClientService.Controllers;
 public class SensorController : ControllerBase
 {
     private readonly ILogger<SensorController> _logger;
-    private readonly ActorRegistry _actorRegistry;
+    private readonly IActorRegistry _actorRegistry;
     private readonly IDataParser _dataParser;
 
-    public SensorController(ILogger<SensorController> logger, ActorRegistry actorRegistry, IDataParser dataParser)
+    public SensorController(ILogger<SensorController> logger, IActorRegistry actorRegistry, IDataParser dataParser)
     {
         _logger = logger;
         _actorRegistry = actorRegistry;
